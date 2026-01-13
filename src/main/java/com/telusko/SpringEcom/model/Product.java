@@ -3,7 +3,12 @@ package com.telusko.SpringEcom.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Date;
 
 @Entity
@@ -22,8 +27,11 @@ public class Product {
     private Date releaseDate;
     private boolean productAvailable;
     private int stockQuantity;
+    private String imageName;
+    private String imageType;
+    @Lob            // Large Object
+    private byte[] imageData;
 
-    // 🔹 No-arg constructor (JPA needs this)
     public Product() {
     }
 
@@ -31,10 +39,7 @@ public class Product {
         this.id = id;
     }
 
-    // 🔹 All-arg constructor
-    public Product(int id, String name, String description, String brand,
-                   BigDecimal price, String category, Date releaseDate,
-                   boolean productAvailable, int stockQuantity) {
+    public Product(int id, String name, String description, String brand, BigDecimal price, String category, Date releaseDate, boolean productAvailable, int stockQuantity, String imageName, String imageType, byte[] imageData) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -44,9 +49,10 @@ public class Product {
         this.releaseDate = releaseDate;
         this.productAvailable = productAvailable;
         this.stockQuantity = stockQuantity;
+        this.imageName = imageName;
+        this.imageType = imageType;
+        this.imageData = imageData;
     }
-
-    // 🔹 Getters & Setters
 
     public int getId() {
         return id;
@@ -120,7 +126,29 @@ public class Product {
         this.stockQuantity = stockQuantity;
     }
 
-    // 🔹 toString()
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public String getImageType() {
+        return imageType;
+    }
+
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
+    }
 
     @Override
     public String toString() {
@@ -134,6 +162,10 @@ public class Product {
                 ", releaseDate=" + releaseDate +
                 ", productAvailable=" + productAvailable +
                 ", stockQuantity=" + stockQuantity +
+                ", imageName='" + imageName + '\'' +
+                ", imageType='" + imageType + '\'' +
+                ", imageData=" + (imageData != null ? imageData.length + " bytes" : "null") +
                 '}';
     }
 }
+
