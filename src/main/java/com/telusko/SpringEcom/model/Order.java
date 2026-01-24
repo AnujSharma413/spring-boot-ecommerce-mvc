@@ -1,5 +1,6 @@
 package com.telusko.SpringEcom.model;
 
+import com.telusko.SpringEcom.model.dto.OrderItemResponse;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Order {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
     private String orderId;
@@ -23,5 +25,5 @@ public class Order {
     private LocalDate orderDate;
 
     @OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
-    private List<OrderItem> orderItem;
+    private List<OrderItem> orderItems;
 }
