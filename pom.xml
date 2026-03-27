@@ -11,7 +11,7 @@
 	<groupId>com.telusko</groupId>
 	<artifactId>SpringEcom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringEcom</name>
+	<packaging>jar</packaging> <name>SpringEcom</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
