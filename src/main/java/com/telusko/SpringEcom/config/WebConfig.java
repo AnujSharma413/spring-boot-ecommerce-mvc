@@ -11,7 +11,8 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins(
                         "http://localhost:5173",
-                        "https://spring-ecom-frontend-mhgsuzppw-anuj-s-projects-4093b6d0.vercel.app/"
+                        "https://spring-ecom-frontend.vercel.app",
+                        "https://spring-ecom-frontend-11ox0z1bg-anuj-s-projects-4093b6d0.vercel.app"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
