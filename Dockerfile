@@ -4,8 +4,8 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Stage 2: Run the application
-FROM openjdk:17-jdk-slim
-# Use a wildcard to find any jar created in the target folder
+# We use 'eclipse-temurin' because 'openjdk' is no longer maintained
+FROM eclipse-temurin:17-jdk-alpine
 COPY --from=build /target/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","app.jar"]
