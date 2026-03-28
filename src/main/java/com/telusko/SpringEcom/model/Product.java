@@ -22,6 +22,7 @@ public class Product {
     private String name;
     private String description;
     private String brand;
+    @Column(precision = 38, scale = 2)
     private BigDecimal price;
     private String category;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
@@ -31,6 +32,7 @@ public class Product {
     private String imageName;
     private String imageType;
     @Lob
+    @Column(name = "image_data", columnDefinition="bytea")
     @JsonIgnore
     private byte[] imageData;
 
