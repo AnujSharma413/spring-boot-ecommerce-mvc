@@ -6,16 +6,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins(
-                        "http://localhost:5173",
-                        "https://spring-ecom-frontend.vercel.app",
-                        "https://spring-ecom-frontend-11ox0z1bg-anuj-s-projects-4093b6d0.vercel.app"
-                )
+        registry.addMapping("/**") // Sabhi endpoints ke liye
+                .allowedOriginPatterns("*") // Sabhi Vercel aur Local URLs ko allow karega
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
-                .allowCredentials(true);
+                .allowCredentials(true); // Cookies aur Auth headers ke liye zaruri hai
     }
 }
